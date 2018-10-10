@@ -41,12 +41,13 @@ class SyncThread implements Runnable {
         synchronized (object1) {
             System.out.println(name + " acquired lock on " + object1);
             doSomeHeavyWork();
-            System.out.println(name +" is acquiring lock on " + object2);
-            synchronized (object2) {
-                System.out.println(name + " acquired lock on " + object2);
-                doSomeHeavyWork();
-            }
-            System.out.println(name + " released lock on " + object2);
+        }
+        System.out.println(name + " released lock on " + object2);
+
+        System.out.println(name +" is acquiring lock on " + object2);
+        synchronized (object2) {
+            System.out.println(name + " acquired lock on " + object2);
+            doSomeHeavyWork();
         }
         System.out.println(name + " released lock on " + object2);
         System.out.println("Finish");
